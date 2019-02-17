@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title><%= title %></title>        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+         <!-- Bootstrap CSS -->
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+       <link rel="stylesheet" href="estilos/estilos.css"> 
+       <!-- <title>Produtos</title>   -->
+    </head>
+    <body>
+        <ul class="nav nav-pills bg-dark nav-fill">  
+            <br>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active text-dark" href="">Contas a Receber</a>
+            </li>
+        </ul>
+        <ul class="nav nav-pills bg-dark nav-fill">  
+            <br>
+            <li class="nav-item">
+                <a class="nav-link" href="/contareceber/views/novo">Cadastro de Contas a Receber</a>
+            </li>
+        </ul>
+       
+    
+        <div class="container">
+        <section id="listarcontasreceber">
+
+            <h1> Contas a Receber </h1>
+
+            <fieldset>
+                <legend> Registros Cadastrados </legend>
+                <table class="table table-striped table-bordered table-hover table-overflow"  widith="4" padding=" .7em" id="registros">
+
+
+                    <tr>
+                        <td>Código</td>
+                        <td>Descrição</td>
+                        <td>Tipo</td>                        
+                        <td>Valor</td>
+                        <td>Vencimento</td>                                                
+                        <td>Empresa</td> 
+                        <td style="text-align: center">Editar</td>
+                        <td style="text-align: center">Excluir</td>
+                        
+                     <!--   <th><a class="btn btn-success btn-block" href="/contareceber/views/novo">Novo</a></th> -->
+                                                                           
+<!--
+                        <td></td>
+                        <td></td>                                                
+-->
+                    </tr>
+                    
+                    <% for(i=0; i<contasreceber.length; i++) { %>
+                        <tr>
+                            <td> <%= contasreceber[i].tpr_codigo %> </td>
+                            <td> <%= contasreceber[i].tpr_descricao %> </td>
+                            <td> <%= contasreceber[i].tpr_tipo %> </td>
+                            <td> <%= contasreceber[i].tpr_valor %> </td>
+                            <td> <%= contasreceber[i].tpr_vencimento %> </td>
+                            <td> <%= contasreceber[i].emp_nome %> </td>
+
+<!--                            <td> <a href="/alterar?param_tpr_codigo=<%= contasreceber[i].tpr_codigo %>">alterar</a> </td>                        
+                            <td> <a href="#" onclick="excluirDados('<%= contasreceber[i].tpr_codigo %>')">excluir</a> </td>                        
+-->
+                            <td><a class="btn btn-outline-dark btn-block" href=<%="/contareceber/views/" + contasreceber[i].tpr_codigo%>><i class="far fa-edit"></i></a></td>
+                            <td><a class="btn btn-outline-dark btn-block" href=<%="/contareceber/excluir/" + contasreceber[i].tpr_codigo%>>  <i class="fas fa-trash-alt" > </i> </a> </td>
+    
+                        </tr>         
+                    <% } %>
+                    
+                </table>
+            </fieldset>
+                    
+                     
+
+        </section>
+    </div>
+    </body>
+</html>

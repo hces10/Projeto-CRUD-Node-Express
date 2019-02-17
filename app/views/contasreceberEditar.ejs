@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+     <link rel="stylesheet" href="estilos/estilos.css">
+    <title>Produtos</title>
+</head>
+
+<body>
+
+
+    <div class="container-fluid">
+
+    <br>
+<!-- aponta para o roteamento-->        
+        <form action="/contareceber/salvar" method="post">
+            <h5 style="border-bottom: 2px #c5c5c5 solid;">Contas a receber</h5>
+            <br>
+<div class="content">
+            <div class="form-group row">
+                <div class="col-md-1">
+                    <label>Codigo: </label>
+                    <input type="text" value="<%= contareceber[0].tpr_codigo%>" name="tpr_codigo" class="form-control" placeholder="Codigo" size="5" readonly>
+                </div>
+                <br>
+
+                <div class="col-md-7">
+                    <label>Descrição: </label>
+                    <input type="text" value="<%= contareceber[0].tpr_descricao%>" name="tpr_descricao" class="form-control" placeholder="Descrição" size="60" maxlength="50">
+                </div>
+                <br>
+
+                <div class="col-md-4">
+                    <label>Tipo: </label>
+                    <input type="text" class="form-control" value="<%= contareceber[0].tpr_tipo%>" name="tpr_tipo" placeholder="Tipo" size="15" maxlength="10">
+                </div>
+                <br>
+                <br>
+
+
+                <div class="col-md-2 offset-md-1    ">
+                    <label>Valor: </label>
+                    <input type="text" class="form-control" value="<%= contareceber[0].tpr_valor%>" name="tpr_valor" placeholder="Valor" size="25" maxlength="20">
+                </div>
+                <br>
+
+                <div class="col-md-4">
+                    <label>Vencimento: </label>
+                    <input type="text" class="form-control" value="<%= contareceber[0].tpr_vencimento%>" name="tpr_vencimento" placeholder="Vencimento" size="5" maxlength="10">
+                </div>
+                <br>
+                    
+                    <div class="form-group ">
+                        <label for="emp_codigo" class="col-md-2 col-form-label text-right">Empresa:</label>
+                        <div class="form-group col-md-4" >
+                            <select name="emp_codigo" id="emp_codigo" class="form-control form-control-sm" required aria-describedby="empresaHelp" style="width:300px" >
+                                <option value=""></option>
+                                <% lista_empresa.forEach(function(empresa) { %>
+                                <option <% if (empresa.emp_codigo == contareceber[0].emp_codigo) { %> selected="selected" <% }%> value="<%= empresa.emp_codigo %>"><%= empresa.emp_fantasia %></option>
+                                <% }); %>
+                            </select>
+    <!--                         <small id="montadoraHelp" class="form-text text-muted">Selecione o Autor.</small>    -->
+                        </div>
+                    </div>
+               </div> 
+                <br>            
+            </div>
+            <div class="form-group row">
+                <div class="col-md-3"></div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-outline-primary btn-block">Salvar </button>                    
+                </div>
+                <br>
+                <div class="col-md-3">
+                    <a class="btn btn-outline-secondary btn-block" href="/contasreceberListar">Voltar</a>
+                </div>
+            </div>
+        </form>
+        <hr>
+    </div>
+
+	<footer>
+		<p class="text-center">
+			&#169; 2018 - Henrique Cesar - Programação Script - Projeto Final
+		</p>
+	</footer>
+
+	<!-- Carrega os scripts e bibliotecas javascript -->
+	<script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script> 
+	<script type="text/javascript" src="vendor/popper.js/dist/umd/popper.js"></script> 
+	<script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+
+</html>
